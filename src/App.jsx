@@ -1,10 +1,11 @@
-import viteLogo from '/vite.svg';
 import React from 'react';
-import { Post } from './assets/post/Post';
+import { Post } from './components/post/Post';
 
 import './global.css';
-import { styles } from './app.module.css';
+import styles from './App.module.css';
+
 import { Header } from './components/header/Header';
+import { Sidebar} from './components/sidebar/Sidebar';
 
 
 export function App() {
@@ -13,23 +14,25 @@ export function App() {
 
       <Header/>
 
-      <div className={styles.wrapper}>
-        <aside>
-          sidebar
-        </aside>
-        <main>
+        <div className={styles.wrapper}>
+          
+          <Sidebar/>
+              
+            <main>
 
-          <Post 
-        author='Henrique José'
-         content='Lorem Ipsum sdasd dfs al dasd '
-        />
+              <Post 
+            author='Henrique José'
+            content='Lorem Ipsum sdasd dfs al dasd '
+            />
 
-        <Post 
-        author='Jose de Abre'
-        content='Lorem Ipsum sadsad sdsad sd ads '
-        />
-        </main>
-      </div>
+              <Post 
+            author='José de Abreu'
+            content='Lorem Ipsum sadsad sdsad sd ads '
+            />
+            
+            </main>
+            
+        </div>
 
       
 

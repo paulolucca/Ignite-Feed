@@ -7,7 +7,49 @@ import styles from './App.module.css';
 import { Header } from './components/header/Header';
 import { Sidebar} from './components/sidebar/Sidebar';
 
+//author :{avatar_url: "", name :"" , role: "", }
+//publisheaAt: Date
+//contente: String
 
+const posts =[
+  {
+    id : 1,
+    author : {
+        avatarUrl:"https://github.com/paulolucca.png",
+        name :"Paulo Cesar",
+        role:"Engenheiro da Computação"
+    },
+    content:[
+        {type:'paragraph', content:'Fala galera',},
+        {type:'paragraph', content:'Acabei de subir mais um projeto',},
+        {type:'link', content:'jane.design/doctorcare',},
+
+    ],
+    publishedAt : new Date('2023-04-03 20:00:00'),
+      
+    
+  },
+
+  {
+    id : 2,
+    author : {
+        avatarUrl:"https://github.com/diego3g.png",
+        name :"Maik Brito",
+        role:"Educator Rocketseat"
+    },
+    content:[
+        {type:'paragraph', content:'Fala galera',},
+        {type:'paragraph', content:'Fazendo novo projeto',},
+        {type:'link', content:'jane.design/doctorcare',},
+
+    ],
+    publishedAt : new Date('2023-04-03 15:00:00'),
+      
+    
+  },
+
+
+];
 export function App() {
   return(
     <div>
@@ -20,16 +62,18 @@ export function App() {
               
             <main>
 
-              <Post 
-            author='Henrique José'
-            content='Lorem Ipsum sdasd dfs al dasd '
-            />
+             {posts.map (posts => {
 
-              <Post 
-            author='José de Abreu'
-            content='Lorem Ipsum sadsad sdsad sd ads '
-            />
-            
+              return ( <Post
+                          author = {posts.author}
+                          content ={posts.content}
+                          publishedAt = {posts.publishedAt}
+
+                        />
+                      )
+
+             })}
+
             </main>
             
         </div>

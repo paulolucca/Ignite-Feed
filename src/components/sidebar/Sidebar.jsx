@@ -1,7 +1,11 @@
 import { PencilLine } from 'phosphor-react';
 
 import styles from './sidebar.module.css';
-import { Avatar } from '../avatar/Avatar';
+import { Avatar } from '../avatar/avatar';
+
+//author :{avatar_url: "", name :"" , role: "", }
+//publisheaAt: Date
+//contente: String
 
 export function Sidebar() {
 

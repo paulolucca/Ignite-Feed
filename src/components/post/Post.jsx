@@ -1,45 +1,66 @@
 import { Comments } from '../comments/Comments';
-import { Avatar } from '../avatar/Avatar';
+import { Avatar } from '../avatar/avatar';
 import styles from './Post.module.css';
 
-export function Post() {
+import {format, formatDistanceToNow} from 'date-fns';
+import ptBr from'date-fns/locale/pt-BR';
+
+export function Post({author, publishedAt, content }) {
+
+  const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'",{
+    locale: ptBr,
+  } )
+
+  const publisheDateRelativeeToNow = formatDistanceToNow(publishedAt, {
+    locale: ptBr,
+    addSuffix: true,
+  })
+
+
   return (
 
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
 
-          <Avatar src="https://github.com/diego3g.png"/>
+          <Avatar src={author.avatarUrl}/>
 
           <div className={styles.authorInfo}>
-              <strong>Paulo Cesar </strong>
-              <span>Web Developer </span>
+              <strong>{author.name}</strong>
+              <span>{author.role}</span>
           </div>
         </div>
 
-        <time dataTime="2022-05-11 08:13:00" title='11 de maio 2022'>
-          Publicado há 1 hora
+        <time dataTime={publishedDateFormatted} title={publishedAt.toISOString()}>
+          {publisheDateRelativeeToNow}
+          
         </time>
       </header>
 
       <div className={styles.content}>
-        <p>
+            {content.map(line =>{
+              if(line.type === 'paragraph'){
+                return <p>{line.content} </p>;
+              } else if (line.type === 'link'){
+                return <p> <a href=""> {line.content} </a></p>;
+              }
+            })}
           <a href="">
           Desenvolvedor Web 
           </a>
-        </p>
+        
 
-        <p>
+      
         <a href="">
           Desenvolvedor React
           </a>
-        </p>
+        
 
-        <p>
+        
         <a href="">
           Desenvolvedor Junior
           </a>
-        </p>
+        
       </div>
 
       <form className={styles.commemtForm}>
